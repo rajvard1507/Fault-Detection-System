@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fault Detection Result</title>
+    <style>
+        body {
+            background: #f9fafc;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #0066ff;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 70%;
+        }
+        td, th {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        img {
+            margin-top: 20px;
+            width: 80%;
+            border-radius: 10px;
+        }
+        a {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .neutral-box {
+            background: #eef4ff;
+            border: 1px solid #cfd9ff;
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #0033cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>⚡ Fault Detection Result</h1>
+    <h2>{{ fault }}</h2>
+
+    <h3>Voltage and Current Inputs</h3>
+    <table>
+        <tr>
+            <th>Phase</th>
+            <th>V Initial (V)</th>
+            <th>V Final (V)</th>
+            <th>I Initial (A)</th>
+            <th>I Final (A)</th>
+        </tr>
+        {% for p in range(3) %}
+        <tr>
+            <td>Phase {{ ['A', 'B', 'C'][p] }}</td>
+            <td>{{ v_init[p] }}</td>
+            <td>{{ v_final[p] }}</td>
+            <td>{{ i_init[p] }}</td>
+            <td>{{ i_final[p] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="neutral-box">
+        <b>Neutral Current:</b> {{ neutral_current }} A
+    </div>
+
+    <h3>Detected Changes</h3>
+    <p><b>Voltage Drops:</b> {{ voltage_diff }} V</p>
+    <p><b>Current Changes:</b> {{ current_diff }} A</p>
+
+    <img src="{{ url_for('static', filename='plot.png') }}" alt="Waveform Plot">
+
+    <br><a href="/">🔙 Go Back</a>
+</body>
+</html>

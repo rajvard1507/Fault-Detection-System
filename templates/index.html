@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>⚡ Power System Fault Detection</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #f4f6fb;
+            text-align: center;
+            margin: 0;
+            padding: 40px;
+        }
+        h1 {
+            color: #0056ff;
+            font-size: 26px;
+        }
+        form {
+            display: inline-block;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+            margin: 10px 0;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 25px;
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover { background: #004ee0; }
+    </style>
+</head>
+<body>
+    <h1>⚡ Power System Fault Detection</h1>
+    <p>Enter Initial & Final Voltage and Current Values</p>
+
+    <form action="/detect" method="POST">
+        <h3>Voltages (V)</h3>
+        <label>V1 Initial:</label><input type="number" step="any" name="v1_initial" required>
+        <label>V2 Initial:</label><input type="number" step="any" name="v2_initial" required>
+        <label>V3 Initial:</label><input type="number" step="any" name="v3_initial" required><br>
+        <label>V1 Final:</label><input type="number" step="any" name="v1_final" required>
+        <label>V2 Final:</label><input type="number" step="any" name="v2_final" required>
+        <label>V3 Final:</label><input type="number" step="any" name="v3_final" required><br>
+
+        <h3>Currents (A)</h3>
+        <label>I1 Initial:</label><input type="number" step="any" name="i1_initial" required>
+        <label>I2 Initial:</label><input type="number" step="any" name="i2_initial" required>
+        <label>I3 Initial:</label><input type="number" step="any" name="i3_initial" required><br>
+        <label>I1 Final:</label><input type="number" step="any" name="i1_final" required>
+        <label>I2 Final:</label><input type="number" step="any" name="i2_final" required>
+        <label>I3 Final:</label><input type="number" step="any" name="i3_final" required><br>
+
+        <h3>Neutral Current (A)</h3>
+        <label>Neutral:</label><input type="number" step="any" name="neutral_current" required><br>
+
+
+        <button type="submit">Detect Fault & Simulate</button>
+    </form>
+</body>
+</html>
